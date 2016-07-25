@@ -4,6 +4,7 @@ public class Main {
 
     public static void main(String[] args) {
 System.out.println("Siema");
-        System.out.println("ludzie");
+        System.out.println("ludzie kochani");
+
     }
 }
