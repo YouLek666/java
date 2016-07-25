@@ -8,21 +8,28 @@ public class Main {
 
 
         System.out.println("Hello");
-        System.out.println("Adding or docking?");
+        System.out.println("Adding, docking or multiply?");
 
         Scanner input = new Scanner(System.in);
         String name = input.nextLine();
 
-        input.nextInt();
 
         int y = input.nextInt();
         int x = input.nextInt();
-        int result = x + y;
 
-        int result1 = x - y;
+        int result = 0;
 
 
-        if (name.equals("Adding")) {System.out.println("your result is:" + result);}
-        if (name.equals("docking")) {System.out.println("your result is:" + result1);}
+        if (name.equals("Adding")) {
+            result = x + y;
+        }
+        if (name.equals("docking")) {
+            result = y - x;
+        }
+        if (name.equals("multiply")) {
+            result = x * y;
+        }
+
+        System.out.println("your result is: " + result);
     }
 }
