@@ -9,6 +9,14 @@ public class kalkulator {
 
     public static void main(String[] args) {
 
+        String port = System.getenv ("PORT");
+        if (port != null) {
+            int portInt = Integer.parseInt (port);
+            Spark.port(portInt);
+        }
+        int portInt = Integer.parseInt (port);
+        Spark.port(portInt);
+
         Spark.get("/kalkulator", (request, response) -> {
             return "<html><b>Hello</b></html>";
         });
