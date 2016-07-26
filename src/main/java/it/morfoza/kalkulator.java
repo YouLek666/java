@@ -1,6 +1,10 @@
 package it.morfoza;
 
+import spark.ModelAndView;
 import spark.Spark;
+
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * Created by widzew on 2016-07-25.
@@ -14,11 +18,23 @@ public class kalkulator {
             int portInt = Integer.parseInt (port);
             Spark.port(portInt);
         }
-        int portInt = Integer.parseInt (port);
-        Spark.port(portInt);
+
 
         Spark.get("/kalkulator", (request, response) -> {
-            return "<html><b>Hello</b>wazzzz up?</html>";
+            String number1 = request.queryParams("number1");
+            String number2 = request.queryParams("number2");
+
+            int number1a = Integer.parseInt(number1);
+            int number2a = Integer.parseInt(number2);
+
+            int result = number1a + number2a;
+
+            Map<String, Object> model = new HashMap();
+            model.put("result", result);
+            model.put("number1", number1);
+            model.put("number2", number2);
+
+            return new ModelAndView(model, "result.ftl");
         });
 
         Spark.get("/contact", ((request, response) -> {return "<html>" +
