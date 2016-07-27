@@ -2,6 +2,7 @@ package it.morfoza;
 
 import spark.ModelAndView;
 import spark.Spark;
+import spark.template.freemarker.FreeMarkerEngine;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -12,6 +13,8 @@ import java.util.Map;
 public class kalkulator {
 
     public static void main(String[] args) {
+
+        Spark.staticFileLocation("/webfiles");
 
         String port = System.getenv ("PORT");
         if (port != null) {
@@ -35,7 +38,20 @@ public class kalkulator {
             model.put("number2", number2);
 
             return new ModelAndView(model, "result.ftl");
-        });
+        }, new FreeMarkerEngine());
+
+        Spark.get("/wynik", (request, response) -> {
+            String number1 = request.queryParams("name");
+            String number2 = request.queryParams("subname");
+
+            Map<String, Object> model = new HashMap();
+            model.put("name", number1);
+            model.put("subname", number2);
+
+            return new ModelAndView(model, "name.ftl");
+        }, new FreeMarkerEngine());
+
+
 
         Spark.get("/contact", ((request, response) -> {return "<html>" +
                 "<form action=\"kalkulator\">" +

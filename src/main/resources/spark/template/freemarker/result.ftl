@@ -1,1 +1,1 @@
-<html> Your numbers: ${number1}, $(number2} = $(result) </html>
+<html> Your numbers: ${number1}, ${number2} = ${result} </html>
