@@ -26,11 +26,20 @@ public class kalkulator {
         Spark.get("/kalkulator", (request, response) -> {
             String number1 = request.queryParams("number1");
             String number2 = request.queryParams("number2");
+            String operation = request.queryParams("operation");
+
 
             int number1a = Integer.parseInt(number1);
             int number2a = Integer.parseInt(number2);
 
-            int result = number1a + number2a;
+            int result;
+
+            if(operation.equals("+")) {
+                result = Kalk.Kalkgod(number1a, number2a);
+            } else {
+
+                result = Kalk.Kalkgod1(number1a, number2a);
+            }
 
             Map<String, Object> model = new HashMap();
             model.put("result", result);
@@ -53,11 +62,5 @@ public class kalkulator {
 
 
 
-        Spark.get("/contact", ((request, response) -> {return "<html>" +
-                "<form action=\"kalkulator\">" +
-                "<input name=\"number1\">" +
-                "<input name=\"number2\">" +
-                "<input type=\"submit\">" +
-            "</form>" + "</html>";
-        }));
+
     }}
