@@ -10,9 +10,9 @@ import java.util.Map;
 /**
  * Created by widzew on 2016-07-25.
  */
-public class kalkulator {
+public class KalkulatorSpark {
 
-    public static void main(String[] args) {
+    public static void runOnSpark(String[] args) {
 
         Spark.staticFileLocation("/webfiles");
 
